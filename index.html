@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>6 Months of Us | Happy Anniversary ❤️</title>
+    
+    <!-- Meta tags for romantic touch on social/messages -->
+    <meta name="description" content="A special 6-month anniversary journey made with all my heart.">
+    <meta name="theme-color" content="#f2f4f8">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ambient Canvas for soft floating hearts & sparkles -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Top Header Bar Container (Prevents overlapping on mobile) -->
+    <header id="top-header">
+        <!-- Chapter Navigation Bar -->
+        <nav id="chapter-nav">
+            <div class="nav-step active" data-chapter="1" title="Gateway">
+                <span class="step-num">1</span>
+            </div>
+            <div class="nav-line"></div>
+            <div class="nav-step" data-chapter="2" title="Memories">
+                <span class="step-num">2</span>
+            </div>
+            <div class="nav-line"></div>
+            <div class="nav-step" data-chapter="3" title="Stars">
+                <span class="step-num">3</span>
+            </div>
+            <div class="nav-line"></div>
+            <div class="nav-step" data-chapter="4" title="Coupons">
+                <span class="step-num">4</span>
+            </div>
+            <div class="nav-line"></div>
+            <div class="nav-step" data-chapter="5" title="Letter">
+                <span class="step-num">5</span>
+            </div>
+        </nav>
+
+        <!-- Top Music & Audio Floating Widget -->
+        <div id="audio-widget">
+            <button id="music-toggle-btn" aria-label="Toggle Background Music">
+                <i class="fas fa-music pulse-icon"></i>
+            </button>
+            <div class="audio-info">
+                <span id="audio-title">Our Song</span>
+                <div class="equalizer" id="equalizer">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN APP CONTAINER -->
+    <main id="app-container">
+
+        <!-- CHAPTER 1: THE GATEWAY -->
+        <section id="chapter-1" class="chapter-section active">
+            <div class="hero-content neu-card">
+                <div class="heart-badge glow-pulse">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h1 class="romantic-heading">Happy 6 Months</h1>
+                <p class="sub-heading" id="partner-heading">my Baby</p>
+
+                <!-- Live Counter Widget -->
+                <div class="counter-box">
+                    <div class="counter-item">
+                        <span id="count-days" class="counter-num">182</span>
+                        <span class="counter-label">Days</span>
+                    </div>
+                    <div class="counter-divider">:</div>
+                    <div class="counter-item">
+                        <span id="count-hours" class="counter-num">00</span>
+                        <span class="counter-label">Hours</span>
+                    </div>
+                    <div class="counter-divider">:</div>
+                    <div class="counter-item">
+                        <span id="count-mins" class="counter-num">00</span>
+                        <span class="counter-label">Mins</span>
+                    </div>
+                    <div class="counter-divider">:</div>
+                    <div class="counter-item">
+                        <span id="count-secs" class="counter-num">00</span>
+                        <span class="counter-label">Secs</span>
+                    </div>
+                </div>
+                <!-- <p class="counter-subtext">...of pure happiness & love</p> -->
+
+                <!-- Passcode / Unlock Section -->
+                <div class="lock-container">
+                    <div class="passcode-display" id="passcode-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <!-- <p class="lock-hint" id="lock-hint-text">Tap keypad digits (0606) or button below</p> -->
+
+                    <!-- Interactive Keypad Grid -->
+                    <div class="neu-keypad" id="neu-keypad">
+                        <button class="keypad-btn" data-key="1">1</button>
+                        <button class="keypad-btn" data-key="2">2</button>
+                        <button class="keypad-btn" data-key="3">3</button>
+                        <button class="keypad-btn" data-key="4">4</button>
+                        <button class="keypad-btn" data-key="5">5</button>
+                        <button class="keypad-btn" data-key="6">6</button>
+                        <button class="keypad-btn" data-key="7">7</button>
+                        <button class="keypad-btn" data-key="8">8</button>
+                        <button class="keypad-btn" data-key="9">9</button>
+                        <button class="keypad-btn clear-btn" data-key="clear"><i class="fas fa-undo"></i></button>
+                        <button class="keypad-btn" data-key="0">0</button>
+                        <button class="keypad-btn heart-key-btn" data-key="heart"><i class="fas fa-heart"></i></button>
+                    </div>
+                    
+                    <button id="unlock-btn" class="glow-btn">
+                        <span>Unlock My Heart</span>
+                        <i class="fas fa-key"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 2: MEMORY LANE (POLAROIDS) -->
+        <section id="chapter-2" class="chapter-section">
+            <div class="section-header">
+                <span class="chapter-badge">Chapter 2</span>
+                <h2>Memory Lane</h2>
+                <!-- <p class="hint-text"><i class="fas fa-hand-pointer"></i> Tap photo to flip • Swipe/arrows to switch</p> -->
+            </div>
+
+            <!-- Polaroid Stack Container -->
+            <div class="polaroid-wrapper">
+                <div id="polaroid-stack">
+                    <!-- Dynamic memory cards rendered via JS -->
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <div class="carousel-controls">
+                <button id="prev-card-btn" class="icon-btn" aria-label="Previous Memory Card"><i class="fas fa-chevron-left"></i></button>
+                <span id="card-counter">1 / 6</span>
+                <button id="next-card-btn" class="icon-btn" aria-label="Next Memory Card"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <button class="next-chapter-btn glow-btn" data-next="3">
+                <span>Explore Constellation Stars</span>
+                <i class="fas fa-sparkles"></i>
+            </button>
+        </section>
+
+        <!-- CHAPTER 3: 6 CONSTELLATION STARS -->
+        <section id="chapter-3" class="chapter-section">
+            <div class="section-header">
+                <span class="chapter-badge">Chapter 3</span>
+                <h2>6 Months, 6 Stars</h2>
+                <p class="hint-text"><i class="fas fa-star"></i> Tap each glowing star to unlock a reason I love you</p>
+            </div>
+
+            <!-- Interactive Star Constellation Container -->
+            <div class="starscape-container neu-card">
+                <div class="constellation-sky" id="constellation-sky">
+                    <!-- Stars rendered dynamically -->
+                </div>
+                <div class="star-progress">
+                    <span id="stars-unlocked-count">0 of 6 stars unlocked</span>
+                </div>
+            </div>
+
+            <button class="next-chapter-btn glow-btn" data-next="4">
+                <span>Open Love Coupons</span>
+                <i class="fas fa-ticket"></i>
+            </button>
+        </section>
+
+        <!-- CHAPTER 4: LOVE COUPONS & MUSIC LOUNGE -->
+        <section id="chapter-4" class="chapter-section">
+            <div class="section-header">
+                <span class="chapter-badge">Chapter 4</span>
+                <h2>Love Coupons</h2>
+                <p class="hint-text" id="coupon-instruction-text"><i class="fab fa-whatsapp"></i> Tap a coupon to reveal code & send me your pick on WhatsApp!</p>
+            </div>
+
+            <!-- Vinyl Player Card -->
+            <div class="vinyl-card neu-card">
+                <div class="vinyl-disc-wrapper" id="vinyl-disc">
+                    <div class="vinyl-disc">
+                        <div class="vinyl-label">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="vinyl-details">
+                    <h3 id="player-song-title">Our Favorite Song</h3>
+                    <p id="player-artist-name">Forever & Always</p>
+                    <button id="player-play-btn" class="pill-play-btn">
+                        <i class="fas fa-play"></i> <span id="play-btn-text">Play Melody</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Love Coupons Grid -->
+            <div class="coupons-grid" id="coupons-grid">
+                <!-- Coupons rendered via JS -->
+            </div>
+
+            <button class="next-chapter-btn glow-btn" data-next="5">
+                <span>Read My Final Letter</span>
+                <i class="fas fa-envelope-open-text"></i>
+            </button>
+        </section>
+
+        <!-- CHAPTER 5: THE GRAND FINALE -->
+        <section id="chapter-5" class="chapter-section">
+            <div class="section-header">
+                <span class="chapter-badge">Chapter 5</span>
+                <h2>For You, My Love</h2>
+            </div>
+
+            <!-- Neumorphic Love Letter -->
+            <div class="letter-card neu-card">
+                <div class="letter-stamp">
+                    <i class="fas fa-stamp"></i> 6 Months
+                </div>
+                <h2 class="letter-title" id="letter-title">To the Girl Who Holds My Entire Heart...</h2>
+                <div class="letter-divider"></div>
+                <div class="letter-body" id="letter-body">
+                    <!-- Typewriter text content populated by config -->
+                </div>
+                <div class="letter-signature" id="letter-signature">
+                    XOXO,<br>
+                    <span class="signature-name" id="your-signature-name">Your Man in Tech</span> ❤️
+                </div>
+            </div>
+
+            <!-- Interactive Quiz / Escape Button Container -->
+            <div class="interactive-quiz neu-card">
+                <h3 id="quiz-question-text">Do you love me as much as I love you?</h3>
+                <div class="quiz-btn-group">
+                    <button id="yes-quiz-btn" class="glow-btn yes-btn">YES! Forever & Always 🥰</button>
+                    <button id="no-quiz-btn" class="no-btn">No 😜</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL FOR STAR REASON -->
+    <div id="star-modal" class="modal-overlay">
+        <div class="modal-card neu-card">
+            <button class="modal-close-btn" id="close-star-modal" aria-label="Close Star Modal"><i class="fas fa-times"></i></button>
+            <div class="modal-icon glow-pulse"><i class="fas fa-star"></i></div>
+            <span class="modal-month-badge" id="modal-month-badge">Month 1</span>
+            <h3 class="modal-title" id="modal-star-title">Your Electric Smile</h3>
+            <p class="modal-text" id="modal-star-text">Reason text goes here...</p>
+            <button class="glow-btn" id="modal-ack-btn">I Love You Too ❤️</button>
+        </div>
+    </div>
+
+    <!-- CELEBRATION FINALE OVERLAY MODAL -->
+    <div id="finale-modal" class="modal-overlay">
+        <div class="modal-card neu-card celebration-card">
+            <div class="celebration-icon glow-pulse">
+                <i class="fas fa-heart-circle-check"></i>
+            </div>
+            <h2>Happy 6 Months Anniversary!</h2>
+            <p id="celebration-msg">You make my heart skip a beat every single day. Here's to a lifetime of love, laughter, and endless memories together!</p>
+            <div class="photo-badge">
+                <i class="fas fa-infinity"></i> Forever & Always
+            </div>
+            <button class="glow-btn" id="replay-btn">
+                <i class="fas fa-rotate-left"></i> Replay Our Story
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

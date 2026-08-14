@@ -1,0 +1,1168 @@
+/* ==========================================================================
+   6-MONTH ANNIVERSARY STYLESHEET (MOBILE-OPTIMIZED SOFT NEUMORPHIC DESIGN)
+   Tailored for iPhone 14 Viewport (390px - 430px) & Touch Gestures
+   ========================================================================== */
+
+:root {
+    --bg-base: #f0f3f8;
+    --bg-card: #f0f3f8;
+    
+    /* Crisp Soft Neumorphic Shadows */
+    --neu-out: 8px 8px 18px #d0d7e2, -8px -8px 18px #ffffff;
+    --neu-out-sm: 4px 4px 10px #d0d7e2, -4px -4px 10px #ffffff;
+    --neu-out-lg: 12px 12px 26px #c4cde0, -12px -12px 26px #ffffff;
+    --neu-in: inset 5px 5px 10px #d0d7e2, inset -5px -5px 10px #ffffff;
+    --neu-in-sm: inset 3px 3px 6px #d0d7e2, inset -3px -3px 6px #ffffff;
+
+    --primary-rose: #ff5e7e;
+    --primary-pink: #ff758c;
+    --primary-gradient: linear-gradient(135deg, #ff5e7e, #ff85a2);
+    --accent-gold: #d97706;
+    
+    --text-dark: #2d3748;
+    --text-muted: #64748b;
+    --text-dim: #94a3b8;
+    
+    --font-ui: 'Outfit', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+    --font-handwriting: 'Dancing Script', cursive;
+    --font-note: 'Caveat', cursive;
+    
+    --safe-top: env(safe-area-inset-top, 20px);
+    --safe-bottom: env(safe-area-inset-bottom, 20px);
+}
+
+/* Reset & Mobile Viewport Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    background-color: var(--bg-base);
+    font-family: var(--font-ui);
+    color: var(--text-dark);
+    position: relative;
+}
+
+/* Canvas Ambient Particle Overlay */
+#bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Base Neumorphic Utility Classes */
+.neu-card {
+    background: var(--bg-card);
+    border-radius: 28px;
+    box-shadow: var(--neu-out);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.neu-card-inset {
+    background: var(--bg-card);
+    border-radius: 20px;
+    box-shadow: var(--neu-in);
+}
+
+/* TOP HEADER FLEX LAYOUT (Fixes Mobile Overlap) */
+#top-header {
+    position: fixed;
+    top: calc(var(--safe-top) + 8px);
+    left: 0;
+    width: 100%;
+    padding: 0 12px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    pointer-events: none;
+}
+
+#chapter-nav, #audio-widget {
+    pointer-events: auto;
+}
+
+/* Chapter Navigation Pill Bar */
+#chapter-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--bg-card);
+    padding: 5px 8px;
+    border-radius: 30px;
+    box-shadow: var(--neu-out-sm);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.nav-step {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    box-shadow: var(--neu-in-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.nav-step.active {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 2px 2px 8px rgba(255, 94, 126, 0.4);
+    transform: scale(1.1);
+}
+
+.nav-step.completed {
+    background: #ffffff;
+    color: var(--accent-gold);
+    box-shadow: var(--neu-out-sm);
+}
+
+.nav-line {
+    width: 6px;
+    height: 2px;
+    background: #cbd5e1;
+}
+
+/* Audio Music Widget */
+#audio-widget {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px 4px 4px;
+    background: var(--bg-card);
+    border-radius: 50px;
+    box-shadow: var(--neu-out-sm);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+#music-toggle-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: var(--primary-gradient);
+    color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 3px 3px 8px rgba(255, 94, 126, 0.4);
+}
+
+.audio-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#audio-title {
+    font-size: 10px;
+    font-weight: 700;
+    max-width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-dark);
+}
+
+@media (max-width: 380px) {
+    .audio-info {
+        display: none; /* Collapses info on very narrow screens for clean look */
+    }
+    #audio-widget {
+        padding: 4px;
+    }
+}
+
+/* Equalizer */
+.equalizer {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 8px;
+    margin-top: 2px;
+}
+
+.equalizer .bar {
+    width: 2px;
+    height: 100%;
+    background: var(--primary-rose);
+    border-radius: 2px;
+    opacity: 0.3;
+}
+
+.equalizer.playing .bar {
+    opacity: 1;
+    animation: bounce 0.8s infinite ease-in-out alternate;
+}
+
+.equalizer.playing .bar:nth-child(1) { animation-delay: 0.1s; }
+.equalizer.playing .bar:nth-child(2) { animation-delay: 0.3s; }
+.equalizer.playing .bar:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes bounce {
+    0% { height: 2px; }
+    100% { height: 10px; }
+}
+
+/* Main Layout Container */
+#app-container {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    z-index: 10;
+}
+
+/* Chapter Sections */
+.chapter-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    padding: calc(var(--safe-top) + 60px) 16px calc(var(--safe-bottom) + 16px) 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(15px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.chapter-section.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Common Section Headers */
+.section-header {
+    text-align: center;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.chapter-badge {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-gold);
+    background: rgba(217, 119, 6, 0.12);
+    padding: 3px 12px;
+    border-radius: 14px;
+    box-shadow: var(--neu-in-sm);
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.section-header h2 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.hint-text {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* Neumorphic Glowing Buttons */
+.glow-btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 13px 22px;
+    border-radius: 50px;
+    border: none;
+    background: var(--primary-gradient);
+    color: white;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 6px 6px 16px rgba(255, 94, 126, 0.35), -4px -4px 12px #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 8px auto 0 auto;
+}
+
+.glow-btn:active {
+    transform: scale(0.97);
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--bg-card);
+    box-shadow: var(--neu-out-sm);
+    color: var(--text-dark);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.icon-btn:active {
+    box-shadow: var(--neu-in-sm);
+    transform: scale(0.93);
+}
+
+/* ==========================================================================
+   CHAPTER 1: THE GATEWAY & NEUMORPHIC KEYPAD
+   ========================================================================== */
+#chapter-1 {
+    justify-content: center;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 350px;
+    padding: 24px 18px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heart-badge {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: white;
+    margin-bottom: 12px;
+    box-shadow: 4px 4px 14px rgba(255, 94, 126, 0.4);
+}
+
+.glow-pulse {
+    animation: heartPulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes heartPulse {
+    0%, 100% { transform: scale(1); box-shadow: 3px 3px 10px rgba(255, 94, 126, 0.3); }
+    50% { transform: scale(1.08); box-shadow: 5px 5px 20px rgba(255, 94, 126, 0.6); }
+}
+
+.romantic-heading {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 2px;
+    color: var(--text-dark);
+}
+
+.sub-heading {
+    font-family: var(--font-handwriting);
+    font-size: 18px;
+    color: var(--primary-rose);
+    margin:21px 0px;
+}
+
+/* Neumorphic Live Counter */
+.counter-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: var(--bg-card);
+    padding: 10px 14px;
+    border-radius: 18px;
+    box-shadow: var(--neu-in);
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.counter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.counter-num {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-rose);
+}
+
+.counter-label {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+.counter-divider {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+}
+
+.counter-subtext {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+}
+
+/* Lock Container & Keypad Grid */
+.lock-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.passcode-display {
+    display: flex;
+    gap: 12px;
+    margin:26px 0px
+}
+
+.passcode-display .dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    box-shadow: var(--neu-in-sm);
+    transition: all 0.2s ease;
+}
+
+.passcode-display .dot.filled {
+    background: var(--primary-rose);
+    box-shadow: 2px 2px 6px rgba(255, 94, 126, 0.5);
+}
+
+.passcode-display .dot.error {
+    background: #ef4444 !important;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.6) !important;
+}
+
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+.shake-error {
+    animation: shakeError 0.5s ease-in-out;
+}
+
+.lock-hint {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+/* Neumorphic Numeric Keypad */
+.neu-keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+    max-width: 240px;
+    margin-bottom: 10px;
+}
+
+.keypad-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: var(--bg-card);
+    box-shadow: var(--neu-out-sm);
+    font-family: var(--font-ui);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 auto;
+    transition: all 0.15s ease;
+}
+
+.keypad-btn:active {
+    box-shadow: var(--neu-in-sm);
+    transform: scale(0.92);
+}
+
+.clear-btn {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.heart-key-btn {
+    color: var(--primary-rose);
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   CHAPTER 2: MEMORY LANE (POLAROID CARDS)
+   ========================================================================== */
+.polaroid-wrapper {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    margin: 6px 0;
+}
+
+#polaroid-stack {
+    position: relative;
+    width: 303px;
+    height: 380px;
+}
+
+/* Polaroid Card & Flip Animation */
+.polaroid-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    padding: 12px 12px 18px 12px;
+    border-radius: 18px;
+    box-shadow: var(--neu-out-lg);
+    color: #222222;
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1), opacity 0.4s ease;
+    transform-style: preserve-3d;
+}
+
+.polaroid-card.flipped {
+    transform: rotateY(180deg) !important;
+}
+
+.polaroid-front, .polaroid-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 12px 12px 18px 12px;
+    backface-visibility: hidden;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+}
+
+/* Front Side */
+.polaroid-img-box {
+    width: 100%;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
+.polaroid-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.polaroid-caption {
+    width: 100%;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.polaroid-caption h3 {
+    font-family: var(--font-handwriting);
+    font-size: 22px;
+    color: #1e293b;
+    line-height: 1.2;
+}
+
+.polaroid-caption span {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--primary-rose);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Back Side */
+.polaroid-back {
+    transform: rotateY(180deg);
+    background: #fffaf6;
+    border: 1px solid #fce7f3;
+    padding: 20px 18px;
+    justify-content: center;
+    text-align: center;
+}
+
+.polaroid-back-stamp {
+    font-size: 28px;
+    color: var(--primary-rose);
+    margin-bottom: 8px;
+}
+
+.polaroid-back h3 {
+    font-family: var(--font-handwriting);
+    font-size: 24px;
+    color: #881337;
+    margin-bottom: 10px;
+}
+
+.polaroid-back p {
+    font-family: var(--font-note);
+    font-size: 20px;
+    line-height: 1.35;
+    color: #334155;
+}
+
+/* Carousel Controls */
+.carousel-controls {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 4px;
+}
+
+#card-counter {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-rose);
+    letter-spacing: 2px;
+}
+
+/* ==========================================================================
+   CHAPTER 3: 6 CONSTELLATION STARS
+   ========================================================================== */
+.starscape-container {
+    width: 100%;
+    max-width: 350px;
+    height: 370px;
+    position: relative;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.constellation-sky {
+    position: relative;
+    width: 100%;
+    height: 310px;
+}
+
+/* Neumorphic Sky Stars */
+.sky-star {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    box-shadow: var(--neu-out-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+    animation: starPulse 2.5s infinite ease-in-out alternate;
+}
+
+.sky-star i {
+    font-size: 15px;
+    color: var(--accent-gold);
+}
+
+.sky-star span {
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-top: 1px;
+}
+
+.sky-star.unlocked {
+    background: var(--primary-gradient);
+    box-shadow: 3px 3px 10px rgba(255, 94, 126, 0.4);
+}
+
+.sky-star.unlocked i, .sky-star.unlocked span {
+    color: white;
+}
+
+@keyframes starPulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.12); }
+}
+
+.star-progress {
+    text-align: center;
+    font-size: 11px;
+    color: var(--primary-rose);
+    font-weight: 700;
+}
+
+/* Neumorphic Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(240, 243, 248, 0.88);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    width: 100%;
+    max-width: 330px;
+    padding: 26px 20px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay.active .modal-card {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--bg-card);
+    box-shadow: var(--neu-out-sm);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    color: var(--text-muted);
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    margin: 0 auto 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+    box-shadow: 3px 3px 10px rgba(255, 94, 126, 0.4);
+}
+
+.modal-month-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--primary-rose);
+}
+
+.modal-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    color: var(--text-dark);
+    margin: 4px 0 10px 0;
+}
+
+.modal-text {
+    font-family: var(--font-note);
+    font-size: 21px;
+    line-height: 1.35;
+    color: var(--text-dark);
+    margin-bottom: 18px;
+}
+
+/* ==========================================================================
+   CHAPTER 4: LOVE COUPONS & VINYL PLAYER
+   ========================================================================== */
+.vinyl-card {
+    width: 100%;
+    max-width: 350px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.vinyl-disc-wrapper {
+    position: relative;
+    width: 68px;
+    height: 68px;
+    flex-shrink: 0;
+}
+
+.vinyl-disc {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, #333 15%, #111 16%, #111 40%, #222 41%, #111 65%, #000 66%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.vinyl-disc-wrapper.playing .vinyl-disc {
+    animation: spinVinyl 4s linear infinite;
+}
+
+@keyframes spinVinyl {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.vinyl-label {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--primary-rose);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: white;
+}
+
+.vinyl-details h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.vinyl-details p {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.pill-play-btn {
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: none;
+    background: var(--primary-gradient);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 6px rgba(255, 94, 126, 0.35);
+}
+
+/* Coupons Grid */
+.coupons-grid {
+    width: 100%;
+    max-width: 350px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.coupon-card {
+    background: var(--bg-card);
+    box-shadow: var(--neu-out-sm);
+    border-radius: 16px;
+    padding: 12px 10px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px dashed #cbd5e1;
+}
+
+.coupon-card.revealed {
+    background: #fff5f7;
+    box-shadow: var(--neu-in-sm);
+    border-style: solid;
+    border-color: var(--primary-rose);
+}
+
+.coupon-badge {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--primary-rose);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.coupon-card h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.coupon-card p {
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.3;
+}
+
+.coupon-reveal-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.coupon-code {
+    display: inline-block;
+    padding: 3px 8px;
+    background: var(--bg-card);
+    box-shadow: var(--neu-in-sm);
+    border-radius: 6px;
+    font-size: 9px;
+    font-family: monospace;
+    color: var(--primary-rose);
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.wa-send-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: #25d366;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 20px;
+    text-decoration: none;
+    box-shadow: 2px 2px 8px rgba(37, 211, 102, 0.4);
+    transition: transform 0.2s ease;
+    margin-top: 2px;
+}
+
+.wa-send-btn:active {
+    transform: scale(0.94);
+}
+
+/* ==========================================================================
+   CHAPTER 5: THE GRAND FINALE
+   ========================================================================== */
+.letter-card {
+    width: 100%;
+    max-width: 350px;
+    padding: 22px 18px;
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.letter-stamp {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    border: 1.5px dashed var(--primary-rose);
+    color: var(--primary-rose);
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 3px 6px;
+    border-radius: 4px;
+    transform: rotate(6deg);
+}
+
+.letter-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    padding-right: 55px;
+}
+
+.letter-divider {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-rose), transparent);
+    margin-bottom: 12px;
+    border-radius: 2px;
+}
+
+.letter-body {
+    font-family: var(--font-note);
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--text-dark);
+    white-space: pre-line;
+    min-height: 110px;
+}
+
+.letter-signature {
+    margin-top: 14px;
+    text-align: right;
+    font-family: var(--font-handwriting);
+    font-size: 20px;
+    color: var(--text-dark);
+}
+
+.signature-name {
+    color: var(--primary-rose);
+}
+
+/* Interactive Quiz */
+.interactive-quiz {
+    width: 100%;
+    max-width: 350px;
+    padding: 18px;
+    text-align: center;
+    position: relative;
+}
+
+.interactive-quiz h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+}
+
+.quiz-btn-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    min-height: 48px;
+}
+
+.yes-btn {
+    width: auto;
+    margin: 0;
+    padding: 11px 18px;
+    font-size: 12px;
+}
+
+.no-btn {
+    padding: 11px 18px;
+    border-radius: 50px;
+    border: none;
+    background: var(--bg-card);
+    box-shadow: var(--neu-out-sm);
+    color: var(--text-muted);
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.no-btn:active {
+    box-shadow: var(--neu-in-sm);
+}
+
+/* Celebration Overlay */
+.celebration-card {
+    max-width: 330px;
+}
+
+.celebration-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: white;
+    margin: 0 auto 14px auto;
+    box-shadow: 3px 3px 12px rgba(255, 94, 126, 0.4);
+}
+
+.celebration-card h2 {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.celebration-card p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+.photo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    background: var(--bg-card);
+    box-shadow: var(--neu-in-sm);
+    border-radius: 20px;
+    font-size: 11px;
+    color: var(--primary-rose);
+    font-weight: 700;
+    margin-bottom: 16px;
+}
